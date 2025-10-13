@@ -1,4 +1,6 @@
+import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UserProfileWidget extends StatelessWidget {
   const UserProfileWidget({super.key});
@@ -6,8 +8,19 @@ class UserProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      appBar: AppBar(title: Text("Profil Pengguna"), backgroundColor: Colors.cyanAccent,),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      appBar: AppBar(
+        title: Text("Profil Pengguna"), 
+        backgroundColor: Theme.of(context).colorScheme.secondary, 
+        actions: [
+          IconButton(
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).toogleTheme();
+            }, 
+            icon: Icon(Icons.lightbulb))
+        ],
+        actionsPadding: EdgeInsets.only(right: 10),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
