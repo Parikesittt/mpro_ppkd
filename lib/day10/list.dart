@@ -11,6 +11,7 @@ class TugasListWidget extends StatelessWidget {
       appBar: AppBar(
         title: Text("Hewan"),
         backgroundColor: Theme.of(context).colorScheme.secondary,
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
@@ -113,6 +114,12 @@ class TugasListWidget extends StatelessWidget {
             leading: Image.asset('assets/images/kudanil.png'),
             title: Text('Kudanil'),
             subtitle: Text('Rp 5.000.000.000'),
+          ),
+          SizedBox(height: 8),
+          ListTile(
+            leading: Image.asset('assets/images/onta.png'),
+            title: Text('Onta'),
+            subtitle: Text('Rp 7.000.000.000'),
           ),
           SizedBox(height: 8),
         ],
