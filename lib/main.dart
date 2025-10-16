@@ -1,5 +1,6 @@
 import 'package:belajar_ppkd/day10/grid.dart';
 import 'package:belajar_ppkd/day10/list.dart';
+import 'package:belajar_ppkd/day12/tugas5.dart';
 import 'package:belajar_ppkd/day9/tugas2.dart';
 import 'package:belajar_ppkd/theme/theme.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const TugasListWidget(),
+      home: const Tugas5(),
       // theme: ThemeData(fontFamily: 'SofiaPro'),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
