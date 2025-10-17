@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({super.key, required this.text, required this.height, required this.width});
+  const ButtonWidget({
+    super.key,
+    required this.text,
+    required this.height,
+    required this.width,
+  });
 
   final String text;
   final double height;
@@ -24,7 +29,11 @@ class ButtonWidget extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Color(0xffffffff),
+          ),
         ),
       ),
     );

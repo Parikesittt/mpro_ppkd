@@ -136,16 +136,14 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               spacing: 8,
               children: [
-                SizedBox(
-                  width: 112,
+                Expanded(
                   child: Divider(color: Color(0xfff2f2f2), thickness: 1),
                 ),
                 Text(
                   'Or Sign In With',
                   style: TextStyle(color: Color(0xff888888)),
                 ),
-                SizedBox(
-                  width: 112,
+                Expanded(
                   child: Divider(color: Color(0xfff2f2f2), thickness: 1),
                 ),
               ],
