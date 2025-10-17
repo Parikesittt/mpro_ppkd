@@ -5,6 +5,7 @@ import 'package:belajar_ppkd/day9/tugas2.dart';
 import 'package:belajar_ppkd/theme/theme.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:belajar_ppkd/tugas1/user_profile.dart';
+import 'package:belajar_ppkd/tugasUI/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const Tugas5(),
+      home: const LoginPage(),
       // theme: ThemeData(fontFamily: 'SofiaPro'),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );

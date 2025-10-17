@@ -45,10 +45,7 @@ class Tugas2Widget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(12.0),
             child: Row(
-              children: [
-                // Spacer(),
-                Icon(Icons.phone), Text("+62814958546"),
-              ],
+              children: [Spacer(), Icon(Icons.phone), Text("+62814958546")],
             ),
           ),
           Row(

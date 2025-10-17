@@ -193,6 +193,7 @@ class _Tugas5State extends State<Tugas5> {
             ),
             SizedBox(height: 42),
             Container(
+              width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.grey.shade300,
                 borderRadius: BorderRadius.circular(16),
@@ -206,27 +207,7 @@ class _Tugas5State extends State<Tugas5> {
                     "$counter",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 12,
-                    children: [
-                      FloatingActionButton(
-                        onPressed: () {
-                          counter++;
-                          setState(() {});
-                        },
-                        child: Icon(Icons.add, color: Colors.black),
-                      ),
-                      FloatingActionButton(
-                        onPressed: () {
-                          counter--;
-                          setState(() {});
-                        },
-                        child: Icon(Icons.remove, color: Colors.black),
-                      ),
-                    ],
-                  ),
+                  // SizedBox(height: 24),
                 ],
               ),
             ),
@@ -292,6 +273,28 @@ class _Tugas5State extends State<Tugas5> {
             ),
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 12,
+        children: [
+          Spacer(),
+          FloatingActionButton(
+            onPressed: () {
+              counter++;
+              setState(() {});
+            },
+            child: Icon(Icons.add, color: Colors.black),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              counter--;
+              setState(() {});
+            },
+            child: Icon(Icons.remove, color: Colors.black),
+          ),
+        ],
       ),
     );
   }
