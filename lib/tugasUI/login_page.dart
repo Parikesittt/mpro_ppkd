@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
               //   child: ToggleButtons(
               //     borderRadius: BorderRadius.circular(8),
               //     constraints: BoxConstraints(minHeight: 40, minWidth: 140),
-              //     isSelected: _isSelected, 
+              //     isSelected: _isSelected,
               //     onPressed: (index) {
               //     setState(() {
               //       for (int i = 0; i < _isSelected.length; i++) {
@@ -75,11 +75,16 @@ class _LoginPageState extends State<LoginPage> {
                         width: 152,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: _selectedIndex == 0 ? Colors.white : Color(0xfff5f5f5),
+                          color: _selectedIndex == 0
+                              ? Colors.white
+                              : Color(0xfff5f5f5),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: GestureDetector(
-                          onTap: () {_selectedIndex = 0; setState(() {});},
+                          onTap: () {
+                            _selectedIndex = 0;
+                            setState(() {});
+                          },
                           child: Text(
                             "Phone Number",
                             style: TextStyle(
@@ -90,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    SizedBox(width:16),
+                    SizedBox(width: 16),
                     // Spacer(),
                     Expanded(
                       child: Container(
@@ -98,11 +103,16 @@ class _LoginPageState extends State<LoginPage> {
                         alignment: Alignment.center,
                         width: 152,
                         decoration: BoxDecoration(
-                          color: _selectedIndex == 0 ? Color(0xfff5f5f5) : Colors.white,
+                          color: _selectedIndex == 0
+                              ? Color(0xfff5f5f5)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: GestureDetector(
-                          onTap: () {_selectedIndex = 1; setState(() {});},
+                          onTap: () {
+                            _selectedIndex = 1;
+                            setState(() {});
+                          },
                           child: Text(
                             "Email",
                             style: TextStyle(
@@ -117,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(height: 32),
-              if(_selectedIndex == 0) ...[
+              if (_selectedIndex == 0) ...[
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Text('Password'),
                   SizedBox(height: 16),
-                  CustomTextField(isPassword: true),
+                  CustomTextField(hint: '*****', isPassword: true),
                 ],
               ),
               SizedBox(height: 16),

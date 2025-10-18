@@ -5,6 +5,9 @@ class CustomTextField extends StatefulWidget {
 
   final String hint;
   final bool isPassword;
+  // final Function? click
+  // 
+  // ;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -31,6 +34,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ? IconButton(
                 icon: Icon(
                   _obscureText ? Icons.visibility : Icons.visibility_off,
+                  color: Color(0xff888888),
                 ),
                 onPressed: () {
                   setState(() {
