@@ -34,10 +34,10 @@ class MyApp extends StatelessWidget {
       // home: const LoginPage(),
       // theme: ThemeData(fontFamily: 'SofiaPro'),
       theme: Provider.of<ThemeProvider>(context).themeData,
-      initialRoute: '/',
+      initialRoute: '/home',
       routes: {
         '/': (context) => const LoginPage(),
-        '/home': (context) => const PageWithNavbar(),
+        '/home': (context) => const MainScreen(),
         '/user': (context) => const UserProfileWidget(),
         '/list': (context) => const TugasListWidget(),
         '/grid': (context) => const TugasGridWidget(),

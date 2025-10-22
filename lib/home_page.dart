@@ -1,60 +1,65 @@
-import 'package:belajar_ppkd/day10/grid.dart';
-import 'package:belajar_ppkd/day10/list.dart';
-import 'package:belajar_ppkd/day12/tugas5.dart';
-import 'package:belajar_ppkd/day9/tugas2.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
-import 'package:belajar_ppkd/tugas1/user_profile.dart';
+import 'package:belajar_ppkd/tugas_7/pages/checkbox_page.dart';
+import 'package:belajar_ppkd/tugas_7/pages/datepicker_page.dart';
+import 'package:belajar_ppkd/tugas_7/pages/dropdown_page.dart';
+import 'package:belajar_ppkd/tugas_7/pages/switch_page.dart';
+import 'package:belajar_ppkd/tugas_7/pages/timepicker_page.dart';
+import 'package:belajar_ppkd/tugas_9/category_list.dart';
+import 'package:belajar_ppkd/tugas_9/category_list_with_icon.dart';
+import 'package:belajar_ppkd/tugas_9/category_list_with_model.dart';
 import 'package:flutter/material.dart';
-import 'package:navbar_router/navbar_router.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   static const List<Widget> _page = [
-    Tugas2Widget(),
-    TugasGridWidget(),
-    UserProfileWidget(),
+    CategoryListPage(),
+    CategoryListWithIcon(),
+    CategoryListWithModel(),
+    // SwitchPage(),
+    // DropdownPage(),
+    // DatepickerPage(),
+    // TimepickerPage(),
   ];
-  List<NavbarItem> items = [
-    NavbarItem(
-      Icons.home_outlined,
-      'Home',
-      backgroundColor: mediumPurple,
-      selectedIcon: Icon(Icons.home, size: 20),
-    ),
-    NavbarItem(
-      Icons.shopping_bag_outlined,
-      'Products',
-      backgroundColor: Colors.orange,
-      selectedIcon: Icon(Icons.shopping_bag, size: 20),
-    ),
-    NavbarItem(
-      Icons.person_outline,
-      'Me',
-      backgroundColor: Colors.teal,
-      selectedIcon: Icon(Icons.person, size: 20),
-    ),
+  final List<IconData> _iconDrawer = [
+    Icons.list,
+    Icons.list,
+    Icons.list,
+    // Icons.lightbulb,
+    // Icons.shopping_bag,
+    // Icons.calendar_month,
+    // Icons.alarm,
+  ];
+  final List<String> _title = [
+    'Category List',
+    'Category List With Icon',
+    'Category List Using Model',
+    // 'Aktifkan Mode Gelap',
+    // 'Pilih Kategori Produk',
+    // 'Pilih Tanggal Lahir',
+    // 'Atur Pengingat',
   ];
 
-  final Map<int, Map<String, Widget>> _routes = const {
-    0: {'/': Tugas5()},
-    1: {'/': TugasGridWidget()},
-    2: {'/': UserProfileWidget()},
-  };
+  void onTapDrawer(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home Screen"),
+        title: Text("Home"),
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.secondary,
         actions: [
           IconButton(
@@ -66,87 +71,44 @@ class _HomePageState extends State<HomePage> {
         ],
         actionsPadding: EdgeInsets.only(right: 10),
       ),
-      bottomNavigationBar: NavbarRouter(
-        errorBuilder: (context) {
-          return const Center(child: Text('Error 404'));
-        },
-        onBackButtonPressed: (isExiting) {
-          return isExiting;
-        },
-        destinationAnimationCurve: Curves.fastOutSlowIn,
-        destinationAnimationDuration: 600,
-        decoration: NavbarDecoration(
-          navbarType: BottomNavigationBarType.shifting,
-        ),
-        destinations: [
-          for (int i = 0; i < items.length; i++)
-            DestinationRouter(
-              navbarItem: items[i],
-              destinations: [
-                for (int j = 0; j < _routes[i]!.keys.length; j++)
-                  Destination(
-                    route: _routes[i]!.keys.elementAt(j),
-                    widget: _routes[i]!.values.elementAt(j),
-                  ),
+      drawer: Drawer(
+        child: ListView.builder(
+          itemCount: _iconDrawer.length,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                ListDrawer(
+                  icon: _iconDrawer[index],
+                  title: _title[index],
+                  click: () {
+                    onTapDrawer(index);
+                  },
+                ),
+                Divider(thickness: 2, color: Color(0xfff2f2f2)),
               ],
-              initialRoute: _routes[i]!.keys.first,
-            ),
-        ],
+            );
+          },
+        ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: _selectedIndex,
-      //   onTap: (index) {
-      //     setState(() {
-      //       _selectedIndex = index;
-      //     });
-      //   },
-      //   items: [
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.grid_3x3_rounded),
-      //       label: "Grid",
-      //     ),
-      //     BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-      //   ],
-      // ),
       body: _page[_selectedIndex],
-      // body: ListView(
-      //   children: [
-      //     ListWidget(
-      //       title: 'Tugas User Profile',
-      //       tap: () {
-      //         Navigator.pushNamed(context, '/user');
-      //       },
-      //     ),
-      //     ListWidget(
-      //       title: 'Tugas Grid View',
-      //       tap: () {
-      //         Navigator.pushNamed(context, '/grid');
-      //       },
-      //     ),
-      //     ListWidget(
-      //       title: 'Tugas List View',
-      //       tap: () {
-      //         Navigator.pushNamed(context, '/list');
-      //       },
-      //     ),
-      //   ],
-      // ),
     );
   }
 }
 
-class ListWidget extends StatelessWidget {
-  const ListWidget({super.key, this.tap, required this.title});
+class ListDrawer extends StatelessWidget {
+  const ListDrawer({
+    super.key,
+    required this.icon,
+    required this.title,
+    this.click,
+  });
 
+  final IconData icon;
   final String title;
-  final void Function()? tap;
+  final void Function()? click;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(title),
-      trailing: InkWell(onTap: tap, child: Text("Open")),
-    );
+    return ListTile(leading: Icon(icon), title: Text(title), onTap: click);
   }
 }
