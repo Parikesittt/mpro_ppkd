@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginPage(),
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => const PageWithNavbar(),
         '/user': (context) => const UserProfileWidget(),
         '/list': (context) => const TugasListWidget(),
         '/grid': (context) => const TugasGridWidget(),
