@@ -7,6 +7,8 @@ import 'package:belajar_ppkd/theme/theme.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:belajar_ppkd/tugas1/user_profile.dart';
 import 'package:belajar_ppkd/tugasUI/login_page.dart';
+import 'package:belajar_ppkd/tugas_10/form_pendaftaran.dart';
+import 'package:belajar_ppkd/tugas_10/welcome_page.dart';
 import 'package:belajar_ppkd/tugas_7/home_screen.dart';
 import 'package:belajar_ppkd/tugas_8/page_with_navbar.dart';
 import 'package:flutter/material.dart';
@@ -34,13 +36,15 @@ class MyApp extends StatelessWidget {
       // home: const LoginPage(),
       // theme: ThemeData(fontFamily: 'SofiaPro'),
       theme: Provider.of<ThemeProvider>(context).themeData,
-      initialRoute: '/home',
+      initialRoute: '/form-pendaftaran',
       routes: {
         '/': (context) => const LoginPage(),
         '/home': (context) => const MainScreen(),
         '/user': (context) => const UserProfileWidget(),
         '/list': (context) => const TugasListWidget(),
         '/grid': (context) => const TugasGridWidget(),
+        '/form-pendaftaran': (context) => const FormPendaftaranPage(),
+        // '/welcome': (context) => const WelcomePage(nama: '', domisili: ''),
       },
     );
   }
