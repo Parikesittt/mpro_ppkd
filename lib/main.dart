@@ -2,14 +2,20 @@ import 'package:belajar_ppkd/day10/grid.dart';
 import 'package:belajar_ppkd/day10/list.dart';
 import 'package:belajar_ppkd/day12/tugas5.dart';
 import 'package:belajar_ppkd/day9/tugas2.dart';
+import 'package:belajar_ppkd/home_page.dart';
 import 'package:belajar_ppkd/theme/theme.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:belajar_ppkd/tugas1/user_profile.dart';
 import 'package:belajar_ppkd/tugasUI/login_page.dart';
+import 'package:belajar_ppkd/tugas_7/home_screen.dart';
+import 'package:belajar_ppkd/tugas_8/page_with_navbar.dart';
 import 'package:flutter/material.dart';
+// import 'package:intl/date_symbol_data_file.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  await initializeDateFormatting('id_ID', null);
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),
@@ -25,9 +31,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const LoginPage(),
+      // home: const LoginPage(),
       // theme: ThemeData(fontFamily: 'SofiaPro'),
       theme: Provider.of<ThemeProvider>(context).themeData,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginPage(),
+        '/home': (context) => const HomeScreen(),
+        '/user': (context) => const UserProfileWidget(),
+        '/list': (context) => const TugasListWidget(),
+        '/grid': (context) => const TugasGridWidget(),
+      },
     );
   }
 }

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({super.key, this.hint = '', this.isPassword = false});
+  const CustomTextField({
+    super.key,
+    this.hint = '',
+    this.isPassword = false,
+    this.controller,
+    this.validator,
+  });
 
   final String hint;
   final bool isPassword;
-  // final Function? click
-  // 
-  // ;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -18,6 +23,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       obscureText: widget.isPassword ? _obscureText : false,
       decoration: InputDecoration(
         hintText: widget.hint,
@@ -30,6 +36,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: Colors.black),
         ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: Colors.red.shade500),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: Colors.red.shade500),
+        ),
+        errorStyle: TextStyle(color: Colors.red.shade500),
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
@@ -44,6 +59,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               )
             : null,
       ),
+      validator: widget.validator,
     );
   }
 }

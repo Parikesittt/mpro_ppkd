@@ -281,6 +281,7 @@ class _Tugas5State extends State<Tugas5> {
         children: [
           Spacer(),
           FloatingActionButton(
+            heroTag: 'fab-1',
             onPressed: () {
               counter++;
               setState(() {});
@@ -288,6 +289,7 @@ class _Tugas5State extends State<Tugas5> {
             child: Icon(Icons.add, color: Colors.black),
           ),
           FloatingActionButton(
+            heroTag: 'fab-2',
             onPressed: () {
               counter--;
               setState(() {});

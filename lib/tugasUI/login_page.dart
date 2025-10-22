@@ -1,3 +1,5 @@
+import 'package:belajar_ppkd/day10/grid.dart';
+import 'package:belajar_ppkd/day12/tugas5.dart';
 import 'package:belajar_ppkd/tugasUI/components/button.dart';
 import 'package:belajar_ppkd/tugasUI/components/custom_text_field.dart';
 import 'package:belajar_ppkd/tugasUI/components/ext_login_button.dart';
@@ -13,8 +15,29 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   List<bool> _isSelected = [true, false];
   int _selectedIndex = 0;
+  bool isFilled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    emailController.addListener(_checkFields);
+    passwordController.addListener(_checkFields);
+  }
+
+  void _checkFields() {
+    setState(() {
+      isFilled =
+          emailController.text.isNotEmpty && passwordController.text.isNotEmpty;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,42 +150,90 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(height: 32),
-              if (_selectedIndex == 0) ...[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              Form(
+                key: _formKey,
+                child: Column(
                   children: [
-                    Text('Phone Number'),
+                    _selectedIndex == 0
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Phone Number'),
+                              SizedBox(height: 16),
+                              CustomTextField(
+                                controller: phoneController,
+                                hint: 'Enter your phone number',
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "Phone number harus diisi";
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
+                          )
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Email'),
+                              SizedBox(height: 16),
+                              CustomTextField(
+                                controller: emailController,
+                                hint: 'Enter your email',
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "Email harus diisi";
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
+                          ),
+                    SizedBox(height: 24),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Password'),
+                        SizedBox(height: 16),
+                        CustomTextField(
+                          controller: passwordController,
+                          hint: '*****',
+                          isPassword: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Password harus diisi";
+                            }
+                            if (value.length < 8) {
+                              return "Password minimal 8 karakter";
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
                     SizedBox(height: 16),
-                    CustomTextField(hint: 'Enter your phone number'),
+                    ButtonWidget(
+                      // isEnable: isFilled,
+                      text: 'Request OTP',
+                      height: 56,
+                      width: double.infinity,
+                      click: () {
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.pushNamed(context, '/home');
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Semua field harus diisi"),
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   ],
                 ),
-              ] else ...[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Email'),
-                    SizedBox(height: 16),
-                    CustomTextField(hint: 'Enter your email'),
-                  ],
-                ),
-              ],
-              SizedBox(height: 24),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Password'),
-                  SizedBox(height: 16),
-                  CustomTextField(hint: '*****', isPassword: true),
-                ],
-              ),
-              SizedBox(height: 16),
-              ButtonWidget(
-                text: 'Request OTP',
-                height: 56,
-                width: double.infinity,
               ),
               SizedBox(height: 24),
               Row(
