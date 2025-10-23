@@ -2,6 +2,7 @@ import 'package:belajar_ppkd/day10/grid.dart';
 import 'package:belajar_ppkd/day10/list.dart';
 import 'package:belajar_ppkd/day12/tugas5.dart';
 import 'package:belajar_ppkd/day9/tugas2.dart';
+import 'package:belajar_ppkd/day_18/splash_screen.dart';
 import 'package:belajar_ppkd/home_page.dart';
 import 'package:belajar_ppkd/theme/theme.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       // home: const LoginPage(),
       // theme: ThemeData(fontFamily: 'SofiaPro'),
       theme: Provider.of<ThemeProvider>(context).themeData,
-      initialRoute: '/form-pendaftaran',
+      initialRoute: '/splash',
       routes: {
         '/': (context) => const LoginPage(),
         '/home': (context) => const MainScreen(),
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
         '/list': (context) => const TugasListWidget(),
         '/grid': (context) => const TugasGridWidget(),
         '/form-pendaftaran': (context) => const FormPendaftaranPage(),
+        '/splash': (context) => const SplashScreenDay18(),
+
         // '/welcome': (context) => const WelcomePage(nama: '', domisili: ''),
       },
     );

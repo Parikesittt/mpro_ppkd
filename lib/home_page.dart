@@ -1,3 +1,5 @@
+import 'package:belajar_ppkd/day_18/login_day_18.dart';
+import 'package:belajar_ppkd/preferences/preference_handler.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:belajar_ppkd/tugas_7/pages/checkbox_page.dart';
 import 'package:belajar_ppkd/tugas_7/pages/datepicker_page.dart';
@@ -32,6 +34,7 @@ class _MainScreenState extends State<MainScreen> {
     Icons.list,
     Icons.list,
     Icons.list,
+    Icons.logout,
     // Icons.lightbulb,
     // Icons.shopping_bag,
     // Icons.calendar_month,
@@ -41,6 +44,7 @@ class _MainScreenState extends State<MainScreen> {
     'Category List',
     'Category List With Icon',
     'Category List Using Model',
+    'Logout',
     // 'Aktifkan Mode Gelap',
     // 'Pilih Kategori Produk',
     // 'Pilih Tanggal Lahir',
@@ -48,10 +52,42 @@ class _MainScreenState extends State<MainScreen> {
   ];
 
   void onTapDrawer(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    Navigator.pop(context);
+    if (index == _iconDrawer.length - 1) {
+      // Logout
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Logout'),
+          content: const Text('Yakin mau logout?'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Batal'),
+            ),
+            TextButton(
+              onPressed: () {
+                PreferenceHandler.removeLogin();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginDay18()),
+                  (route) => false,
+                );
+                // Navigator.pushAndRemoveUntil(context, index);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Berhasil logout!')),
+                );
+              },
+              child: const Text('Logout'),
+            ),
+          ],
+        ),
+      );
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+      Navigator.pop(context);
+    }
   }
 
   @override
