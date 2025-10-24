@@ -3,11 +3,13 @@ import 'package:belajar_ppkd/day10/list.dart';
 import 'package:belajar_ppkd/day12/tugas5.dart';
 import 'package:belajar_ppkd/day9/tugas2.dart';
 import 'package:belajar_ppkd/day_18/splash_screen.dart';
+import 'package:belajar_ppkd/day_19/view/login_page.dart';
+import 'package:belajar_ppkd/day_19/view/register_page.dart';
 import 'package:belajar_ppkd/home_page.dart';
 import 'package:belajar_ppkd/theme/theme.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:belajar_ppkd/tugas1/user_profile.dart';
-import 'package:belajar_ppkd/tugasUI/login_page.dart';
+import 'package:belajar_ppkd/view/login_page.dart';
 import 'package:belajar_ppkd/tugas_10/form_pendaftaran.dart';
 import 'package:belajar_ppkd/tugas_10/welcome_page.dart';
 import 'package:belajar_ppkd/tugas_7/home_screen.dart';
@@ -36,19 +38,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // home: const LoginPage(),
       // theme: ThemeData(fontFamily: 'SofiaPro'),
-      theme: Provider.of<ThemeProvider>(context).themeData,
+      theme: lightMode,
+      darkTheme: darkMode,
+      themeMode: ThemeMode.system,
       initialRoute: '/splash',
       routes: {
-        '/': (context) => const LoginPage(),
+        '/': (context) => const LoginScreen(),
         '/home': (context) => const MainScreen(),
         '/user': (context) => const UserProfileWidget(),
         '/list': (context) => const TugasListWidget(),
         '/grid': (context) => const TugasGridWidget(),
         '/form-pendaftaran': (context) => const FormPendaftaranPage(),
         '/splash': (context) => const SplashScreenDay18(),
-
-        // '/welcome': (context) => const WelcomePage(nama: '', domisili: ''),
+        '/register': (context) => const RegisterPage(),
+        '/welcome': (context) => const WelcomePage(nama: '', domisili: ''),
       },
+      // home: LoginPage(),
     );
   }
 }
