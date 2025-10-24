@@ -1,4 +1,6 @@
 import 'package:belajar_ppkd/day_18/login_day_18.dart';
+import 'package:belajar_ppkd/day_19/view/list_user.dart';
+import 'package:belajar_ppkd/day_19/view/login_page.dart';
 import 'package:belajar_ppkd/preferences/preference_handler.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:belajar_ppkd/tugas_7/pages/checkbox_page.dart';
@@ -25,12 +27,14 @@ class _MainScreenState extends State<MainScreen> {
     CategoryListPage(),
     CategoryListWithIcon(),
     CategoryListWithModel(),
+    ListUserPage(),
     // SwitchPage(),
     // DropdownPage(),
     // DatepickerPage(),
     // TimepickerPage(),
   ];
   final List<IconData> _iconDrawer = [
+    Icons.list,
     Icons.list,
     Icons.list,
     Icons.list,
@@ -44,6 +48,7 @@ class _MainScreenState extends State<MainScreen> {
     'Category List',
     'Category List With Icon',
     'Category List Using Model',
+    'List User',
     'Logout',
     // 'Aktifkan Mode Gelap',
     // 'Pilih Kategori Produk',
@@ -69,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                 PreferenceHandler.removeLogin();
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginDay18()),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                   (route) => false,
                 );
                 // Navigator.pushAndRemoveUntil(context, index);
