@@ -9,11 +9,13 @@ import 'package:belajar_ppkd/home_page.dart';
 import 'package:belajar_ppkd/theme/theme.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:belajar_ppkd/tugas1/user_profile.dart';
+import 'package:belajar_ppkd/view/dashboard_page.dart';
 import 'package:belajar_ppkd/view/login_page.dart';
 import 'package:belajar_ppkd/tugas_10/form_pendaftaran.dart';
 import 'package:belajar_ppkd/tugas_10/welcome_page.dart';
 import 'package:belajar_ppkd/tugas_7/home_screen.dart';
 import 'package:belajar_ppkd/tugas_8/page_with_navbar.dart';
+import 'package:belajar_ppkd/view/main_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:intl/date_symbol_data_file.dart';
 import 'package:provider/provider.dart';
@@ -41,19 +43,19 @@ class MyApp extends StatelessWidget {
       theme: lightMode,
       darkTheme: darkMode,
       themeMode: ThemeMode.system,
-      initialRoute: '/splash',
-      routes: {
-        '/': (context) => const LoginScreen(),
-        '/home': (context) => const MainScreen(),
-        '/user': (context) => const UserProfileWidget(),
-        '/list': (context) => const TugasListWidget(),
-        '/grid': (context) => const TugasGridWidget(),
-        '/form-pendaftaran': (context) => const FormPendaftaranPage(),
-        '/splash': (context) => const SplashScreenDay18(),
-        '/register': (context) => const RegisterPage(),
-        '/welcome': (context) => const WelcomePage(nama: '', domisili: ''),
-      },
-      // home: LoginPage(),
+      // initialRoute: '/splash',
+      // routes: {
+      //   '/': (context) => const LoginPage(),
+      //   '/home': (context) => const MainScreen(),
+      //   '/user': (context) => const UserProfileWidget(),
+      //   '/list': (context) => const TugasListWidget(),
+      //   '/grid': (context) => const TugasGridWidget(),
+      //   '/form-pendaftaran': (context) => const FormPendaftaranPage(),
+      //   '/splash': (context) => const SplashScreenDay18(),
+      //   '/register': (context) => const RegisterPage(),
+      //   '/welcome': (context) => const WelcomePage(nama: '', domisili: ''),
+      // },
+      home: MainPage(),
     );
   }
 }

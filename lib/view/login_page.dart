@@ -1,5 +1,7 @@
 import 'package:belajar_ppkd/components/custom_button.dart';
 import 'package:belajar_ppkd/components/custom_input_form.dart';
+import 'package:belajar_ppkd/components/custome_image_button.dart';
+import 'package:belajar_ppkd/view/register_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,15 +16,45 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
+      backgroundColor: Color(0xffF3F4FF),
       body: Center(
-        child: Stack(
-          // alignment: AlignmentGeometry.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Column(
+              children: [
+                Container(
+                  height: 64,
+                  width: 64,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0xff8C5CF5), Color(0xffEB489A)],
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  alignment: AlignmentGeometry.center,
+                  child: Text(
+                    "I",
+                    style: TextStyle(fontSize: 32, color: Colors.white),
+                  ),
+                ),
+                height(16),
+                Text(
+                  "Welcome Back",
+                  style: TextStyle(color: Color(0xff101828), fontSize: 30),
+                ),
+                height(8),
+                Text(
+                  "Sign in to continue to Invengo",
+                  style: TextStyle(color: Color(0x60101828), fontSize: 16),
+                ),
+              ],
+            ),
+            height(32),
             Container(
               padding: EdgeInsets.all(24),
               width: 343,
-              height: 553,
+              // height: 453,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -31,17 +63,29 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Login",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  height(12),
-                  Text("Enter your email and password to login"),
-                  height(24),
-                  InputForm(),
                   height(8),
-                  InputForm(),
+                  Text(
+                    "Email Address",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  height(8),
+                  InputForm(
+                    hint: "Enter your email",
+                    prefixIcon: Icon(Icons.email_outlined),
+                  ),
+                  height(24),
+                  Text(
+                    "Password",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  height(8),
+                  InputForm(
+                    hint: "Enter your password",
+                    isPassword: true,
+                    prefixIcon: Icon(Icons.lock_outline_rounded),
+                  ),
                   height(16),
                   Row(
                     children: [
@@ -76,7 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             child: Text(
                               "Remember Me",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Color(0x80101828),
+                              ),
                             ),
                           ),
                         ],
@@ -95,17 +142,68 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   height(24),
-                  Button(buttonText: "Login", height: 48, width: 295),
-                  height(24),
-                  Text("Or login with"),
+                  Button(
+                    buttonText: "Sign In",
+                    height: 48,
+                    width: 295,
+                    icon: Icons.arrow_forward,
+                  ),
                   height(24),
                   Row(
+                    spacing: 8,
                     children: [
-                      // ImageButton(),
+                      Expanded(child: Divider(color: Color(0x20101828))),
+                      Text(
+                        "Or login with",
+                        style: TextStyle(color: Color(0x60101828)),
+                      ),
+                      Expanded(child: Divider(color: Color(0x20101828))),
+                    ],
+                  ),
+                  height(24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 12,
+                    children: [
+                      ImageButton(
+                        image: 'assets/images/iconGoogle.png',
+                        buttonText: "Google",
+                        onPressed: () {},
+                      ),
+                      ImageButton(
+                        image: 'assets/images/Vector.png',
+                        buttonText: "Github",
+                        onPressed: () {},
+                      ),
                     ],
                   ),
                 ],
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account?",
+                  style: TextStyle(color: Color(0x60101828)),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return RegisterPage();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(color: Color(0xff8B5CF6)),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

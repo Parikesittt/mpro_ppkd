@@ -7,11 +7,13 @@ class InputForm extends StatefulWidget {
     this.hint,
     this.isPassword = false,
     this.validator,
+    this.prefixIcon,
   });
   final TextEditingController? controller;
   final String? hint;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final Widget? prefixIcon;
 
   @override
   State<InputForm> createState() => _InputFormState();
@@ -28,9 +30,7 @@ class _InputFormState extends State<InputForm> {
         hintText: widget.hint,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
+          borderSide: BorderSide(color: Color(0xffD1D5DC)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -45,6 +45,7 @@ class _InputFormState extends State<InputForm> {
           borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
         ),
         errorStyle: TextStyle(color: Theme.of(context).colorScheme.error),
+        prefixIcon: widget.prefixIcon,
         suffixIcon: widget.isPassword
             ? IconButton(
                 onPressed: () {

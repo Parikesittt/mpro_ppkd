@@ -2,6 +2,7 @@ import 'package:belajar_ppkd/day_18/login_day_18.dart';
 import 'package:belajar_ppkd/day_19/view/login_page.dart';
 import 'package:belajar_ppkd/home_page.dart';
 import 'package:belajar_ppkd/preferences/preference_handler.dart';
+import 'package:belajar_ppkd/view/login_page.dart';
 // import 'package:belajar_ppkd/tugas_7/home_screen.dart';
 import 'package:flutter/material.dart';
 // import 'package:ppkd_b4/constant/app_image.dart';
@@ -36,7 +37,7 @@ class _SplashScreenDay18State extends State<SplashScreenDay18> {
       } else {
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
+          MaterialPageRoute(builder: (context) => LoginPage()),
           (route) => false,
         );
       }
