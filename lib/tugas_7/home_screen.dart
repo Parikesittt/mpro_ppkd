@@ -20,21 +20,21 @@ class _HomeScreenState extends State<HomeScreen> {
     CheckboxPage(),
     SwitchPage(),
     DropdownPage(),
-    DatepickerPage(),
+    // DatepickerPage(),
     TimepickerPage(),
   ];
   final List<IconData> _iconDrawer = [
     Icons.description,
     Icons.lightbulb,
     Icons.shopping_bag,
-    Icons.calendar_month,
+    // Icons.calendar_month,
     Icons.alarm,
   ];
   final List<String> _title = [
     'Syarat & Ketentuan',
     'Aktifkan Mode Gelap',
     'Pilih Kategori Produk',
-    'Pilih Tanggal Lahir',
+    // 'Pilih Tanggal Lahir',
     'Atur Pengingat',
   ];
 

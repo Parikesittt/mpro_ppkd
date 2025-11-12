@@ -1,42 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-class DatepickerPage extends StatefulWidget {
-  const DatepickerPage({super.key});
+class DatePickerFormField extends StatefulWidget {
+  final TextEditingController controller;
+
+  const DatePickerFormField({super.key, required this.controller});
 
   @override
-  State<DatepickerPage> createState() => _DatepickerPageState();
+  State<DatePickerFormField> createState() => _DatePickerFormFieldState();
 }
 
-class _DatepickerPageState extends State<DatepickerPage> {
-  DateTime? selectedDate = DateTime.now();
+class _DatePickerFormFieldState extends State<DatePickerFormField> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () async {
-              final DateTime? date = await showDatePicker(
-                context: context,
-                firstDate: DateTime(1900),
-                lastDate: DateTime(2100),
-        
-
-              );
-              if (date != null) {
-                setState(() {
-                  selectedDate = date;
-                });
-              }
-            },
-            child: Text("Pilih tanggal lahir"),
-          ),
-          Text(
-            "Tanggal Lahir : ${DateFormat('dd MMMM yyyy', 'id_ID').format(selectedDate!)}",
-          ),
-        ],
+    return TextFormField(
+      controller: widget.controller,
+      readOnly: true, // biar user gak bisa ngetik manual
+      decoration: InputDecoration(
+        hintText: 'Pilih tanggal',
+        suffixIcon: const Icon(Icons.calendar_today),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
+      onTap: () async {
+        DateTime? pickedDate = await showDatePicker(
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: DateTime(2000),
+          lastDate: DateTime(2101),
+        );
+        if (pickedDate != null) {
+          setState(() {
+            widget.controller.text =
+                "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
+          });
+        }
+      },
     );
   }
 }

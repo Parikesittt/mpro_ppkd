@@ -192,7 +192,10 @@ class _ListUserPageState extends State<ListUserPage> {
                       final items = data[index];
                       return ListTile(
                         title: Text(items.name),
-                        subtitle: Text(items.username),
+                        subtitle: Text(
+                          items.username,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [

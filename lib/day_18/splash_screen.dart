@@ -37,7 +37,7 @@ class _SplashScreenDay18State extends State<SplashScreenDay18> {
       } else {
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) => LoginScreen()),
           (route) => false,
         );
       }

@@ -1,6 +1,7 @@
 import 'package:belajar_ppkd/day_18/login_day_18.dart';
 import 'package:belajar_ppkd/day_19/view/list_user.dart';
 import 'package:belajar_ppkd/day_19/view/login_page.dart';
+import 'package:belajar_ppkd/day_32/views/list_crypto.dart';
 import 'package:belajar_ppkd/preferences/preference_handler.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
 import 'package:belajar_ppkd/tugas_7/pages/checkbox_page.dart';
@@ -24,10 +25,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   static const List<Widget> _page = [
-    CategoryListPage(),
-    CategoryListWithIcon(),
-    CategoryListWithModel(),
     ListUserPage(),
+    ListCryptoScren(),
+    // CategoryListPage(),
+    // CategoryListWithIcon(),
+    // CategoryListWithModel(),
     // SwitchPage(),
     // DropdownPage(),
     // DatepickerPage(),
@@ -36,8 +38,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<IconData> _iconDrawer = [
     Icons.list,
     Icons.list,
-    Icons.list,
-    Icons.list,
+    // Icons.list,
+    // Icons.list,
     Icons.logout,
     // Icons.lightbulb,
     // Icons.shopping_bag,
@@ -45,10 +47,11 @@ class _MainScreenState extends State<MainScreen> {
     // Icons.alarm,
   ];
   final List<String> _title = [
-    'Category List',
-    'Category List With Icon',
-    'Category List Using Model',
+    // 'Category List',
+    // 'Category List With Icon',
+    // 'Category List Using Model',
     'List User',
+    'List Crypto',
     'Logout',
     // 'Aktifkan Mode Gelap',
     // 'Pilih Kategori Produk',
