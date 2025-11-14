@@ -8,6 +8,7 @@ class ButtonWidget extends StatelessWidget {
     required this.width,
     required this.click,
     this.isEnable = true,
+    this.isLoading,
   });
 
   final String text;
@@ -15,6 +16,7 @@ class ButtonWidget extends StatelessWidget {
   final bool isEnable;
   final double width;
   final void Function()? click;
+  final bool? isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +37,17 @@ class ButtonWidget extends StatelessWidget {
         //     RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
         //   ),
         // ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Color(0xffffffff),
-          ),
-        ),
+        child: isLoading == true
+            ? CircularProgressIndicator()
+            : Text(
+                text,
+                // "Login",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
       ),
     );
   }

@@ -6,6 +6,8 @@ import 'package:belajar_ppkd/day_18/splash_screen.dart';
 import 'package:belajar_ppkd/day_19/view/login_page.dart';
 import 'package:belajar_ppkd/day_19/view/register_page.dart';
 import 'package:belajar_ppkd/day_32/views/list_crypto.dart';
+import 'package:belajar_ppkd/day_33/views/login_screen.dart';
+import 'package:belajar_ppkd/day_33/views/register_screen.dart';
 import 'package:belajar_ppkd/home_page.dart';
 import 'package:belajar_ppkd/theme/theme.dart';
 import 'package:belajar_ppkd/theme/theme_provider.dart';
@@ -44,20 +46,20 @@ class MyApp extends StatelessWidget {
       theme: lightMode,
       darkTheme: darkMode,
       themeMode: ThemeMode.system,
-      initialRoute: '/crypto',
+      initialRoute: '/register',
       routes: {
-        '/': (context) => const LoginPage(),
+        '/': (context) => const LoginScreenApi(),
         '/home': (context) => const MainScreen(),
         '/user': (context) => const UserProfileWidget(),
         '/list': (context) => const TugasListWidget(),
         '/grid': (context) => const TugasGridWidget(),
         '/form-pendaftaran': (context) => const FormPendaftaranPage(),
         '/splash': (context) => const SplashScreenDay18(),
-        '/register': (context) => const RegisterPage(),
+        '/register': (context) => const RegisterScreenApi(),
         '/crypto': (context) => const ListCryptoScren(),
         '/welcome': (context) => const WelcomePage(nama: '', domisili: ''),
       },
-      // home: MainPage(),
+      // home: RegisterScreenApi(),
     );
   }
 }
